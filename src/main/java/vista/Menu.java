@@ -2,8 +2,10 @@ package vista;
 
 import java.util.Scanner;
 
+import servicio.ClienteServicio;
+
 /*
-  clienteServicio, instancia de ClienteServicio.
+
  archivoServicio, instancia de ArchivoServicio.
  exportadorCsv, instancia de ExportarCsv.
  exportarTxt, instancia de ExportarTxt.
@@ -11,9 +13,16 @@ import java.util.Scanner;
  */
 public class Menu {
 	
+	private ClienteServicio cs;
 	private String fileName = "Clientes";//exportar el archivo
 	private String fileName1 = "DBClientes.csv"; //importar el archivo
 	private Scanner sc;
+	
+	public Menu() {
+		sc = new Scanner(System.in);
+		cs = new ClienteServicio();
+		
+	}
 	
 	public void iniciarMenu() {
 		int opcion = 0;
@@ -57,6 +66,11 @@ public class Menu {
 	
 	public void listarCliente() {
 		//muestra lista de clientes agregados, ya sea por importación o agregando a mano
+		if (cs.getListaClientes().size() == 0) {
+			System.out.println("No hay Clientes para visualizar");
+		} else {
+			cs.listarClientes();
+		}
 	}
 	
 	public void agregarCliente() {

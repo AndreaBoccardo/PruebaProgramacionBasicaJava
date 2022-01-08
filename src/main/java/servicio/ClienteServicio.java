@@ -29,18 +29,26 @@ public class ClienteServicio implements ClienteServicioInt {
 
 	@Override
 	public void listarClientes() {
-	
-
+	listaClientes.forEach(c -> 
+	System.out.println("-------------Datos del Cliente-------------\n" + 
+	(c.toString() + "\n-------------------------------------------")));
 	}
 
 	@Override
-	public void agregarCliente() {
+	public void agregarCliente(Cliente cli) {
 	
-
+		for (Cliente cliente : listaClientes) {
+			if (cliente.getRunCliente().equals(cli.getRunCliente())) {
+				System.out.println("Ya existe un cliente con ese rut");
+			} else {
+				listaClientes.add(cli);
+				System.out.println("Cliente agregado exitosamente");
+			}	
+		}
 	}
 
 	@Override
-	public void editarCliente() {
+	public void editarCliente(Cliente cli) {
 		
 
 	}
