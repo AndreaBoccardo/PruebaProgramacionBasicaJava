@@ -4,7 +4,7 @@ import java.util.List;
 import modelo.Cliente;
 
 public class ClienteServicioPrueba {
-	
+
 	private List<Cliente> listaClientes;
 
 	public String agregarCliente(Cliente cli) {

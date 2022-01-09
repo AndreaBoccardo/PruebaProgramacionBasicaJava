@@ -110,7 +110,7 @@ public class ClienteServicio implements ClienteServicioInt {
 				System.out.println("Ingrese la opción a editar de los datos del cliente:");
 				int opEditar = sc.nextInt();
 				String n = "";
-				
+
 				switch (opEditar) {
 				case 1:
 					System.out.println("1.-Ingrese el nuevo RUN del Cliente:");
@@ -125,12 +125,14 @@ public class ClienteServicio implements ClienteServicioInt {
 				case 3:
 					System.out.println("1.-Ingrese el nuevo Apellido del Cliente:");
 					n = sc.next();
-					cliente.setApellidoCliente(n);;
+					cliente.setApellidoCliente(n);
+					;
 					break;
 				case 4:
 					System.out.println("1.-Ingrese los nuevos años como Cliente:");
 					n = sc.next();
-					cliente.setAniosCliente(Integer.parseInt(n));;
+					cliente.setAniosCliente(Integer.parseInt(n));
+					;
 					break;
 				default:
 					System.out.println("Opción no válida");

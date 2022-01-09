@@ -1,13 +1,13 @@
 package modelo;
 
 public class Cliente {
-	
+
 	private String runCliente;
 	private String nombreCliente;
 	private String apellidoCliente;
 	private int aniosCliente;
 	private CategoriaEnum nombreCategoria;
-	
+
 	public Cliente(String runCliente, String nombreCliente, String apellidoCliente, int aniosCliente,
 			CategoriaEnum nombreCategoria) {
 		super();
@@ -64,16 +64,11 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente ["
-				+ "RUN del Cliente: " + runCliente + ", "
-				+ "Nombre del Cliente: " + nombreCliente + ", "
-				+ "Apellido del Cliente: " + apellidoCliente + ", "
-				+ "Años como Cliente: " + aniosCliente + " años"+ ", "
-				+ "Categoría del Cliente: " + nombreCategoria + "]";
+		return  "RUN del Cliente: " + runCliente  
+				+ "\nNombre del Cliente: " + nombreCliente 
+				+ "\nApellido del Cliente: " + apellidoCliente  
+				+ "\nAños como Cliente: " + aniosCliente + " años"
+				+ "\nCategoría del Cliente: " + nombreCategoria ;
 	}
-	
-	
-	
-	
 
 }

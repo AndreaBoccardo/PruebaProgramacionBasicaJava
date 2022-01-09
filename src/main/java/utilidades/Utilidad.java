@@ -1,19 +1,17 @@
 package utilidades;
 
 public class Utilidad {
-	
-	public void limpiarPantalla()
-	{
+
+	public void limpiarPantalla() {
 		for (int i = 0; i < 100; i++) {
-			System.out.println();			
+			System.out.println();
 		}
 		System.out.println();
 		System.out.flush();
 		System.out.println();
 	}
-	
-	public void esperar()
-	{
+
+	public void esperar() {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -21,10 +19,9 @@ public class Utilidad {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void printLine(String mensaje) {
 		System.out.println(mensaje);
 	}
-
 
 }

@@ -8,50 +8,52 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import modelo.CategoriaEnum;
 import modelo.Cliente;
 
-public class ArchivoServicio extends Exportador{
+public class ArchivoServicio extends Exportador {
 
 	@Override
 	public void exportar(String fileName, List<Cliente> listaClientes) throws FileNotFoundException {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	public ArrayList<Cliente> cargarDatos(String fileName) throws IOException{
-		File archivo = new File(String.format("%s/DBClientes.csv", fileName));
+
+	public ArrayList<Cliente> cargarDatos(String path) throws FileNotFoundException
+	{
+		File archivo = new File(String.format("%s/DBClientes.csv", path));
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		
-		if (archivo.exists()) {
-			
+		if (archivo.exists()) {			
 			try {
 				FileReader fr = new FileReader(archivo);
 				BufferedReader lector = new BufferedReader(fr);
 				String data = lector.readLine();
-				while(data != null) {
+				while (data != null) {					
 					String[] datos = data.split(",");
-					Cliente c = new Cliente(datos[0],datos[1],datos[2],Integer.parseInt(datos[3])
-							,datos[4]);
+					Cliente c = new Cliente(datos[0], datos[1], datos[2], Integer.parseInt(datos[3]), 
+							CategoriaEnum.valueOf(datos[4]));
 					clientes.add(c);
 					data = lector.readLine();
-				}
+				}	
+				System.out.println("Datos cargados correctamente en la lista");
 				lector.close();
-				
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			
-			
-			
-		} else {
+			}			
+		}
+		else
+		{
 			System.out.println("El archivo no se encuentra en esa ruta.");
 		}
 		
-		
-		
-		return clientes;	
+		return clientes;
 	}
-
 }
+
+
