@@ -1,28 +1,35 @@
 package vista;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import modelo.CategoriaEnum;
 import modelo.Cliente;
 import servicio.ClienteServicio;
+import servicio.ExportadorCsv;
+import servicio.ExportadorTxt;
+import utilidades.Utilidad;
 
 /*
-
  archivoServicio, instancia de ArchivoServicio.
- exportadorCsv, instancia de ExportarCsv.
- exportarTxt, instancia de ExportarTxt.
- * 
  */
 public class Menu {
 	
+	private Scanner sc;
 	private ClienteServicio cs;
+	private ExportadorCsv exportadorCsv;
+	private ExportadorTxt exportarTxt;
 	private String fileName = "Clientes";//exportar el archivo
 	private String fileName1 = "DBClientes.csv"; //importar el archivo
-	private Scanner sc;
+	private Utilidad ut;
+	
 	
 	public Menu() {
 		sc = new Scanner(System.in);
 		cs = new ClienteServicio();
+		exportadorCsv = new ExportadorCsv();
+		exportarTxt = new ExportadorTxt();
+		ut = new Utilidad();
 		
 	}
 	
@@ -104,10 +111,48 @@ public class Menu {
 	
 	public void exportarDatos() {
 		//lama a método para exportar clientes en formato “.txt” o“.csv”.
+		System.out.println("---------Exportar Datos-----------");
+		System.out.println("Seleccione el formato a exportar:");
+		System.out.println("1.-Formato csv");
+		System.out.println("2.-Formato txt");
+		System.out.println("Ingrese una opción para exportar:");
+		String op = sc.nextLine();
+		System.out.println("----------------------------------");
+		
+		switch (op) {
+		case "1":
+			System.out.println("---------Exportar Datos-----------");
+			System.out.println("Ingresa la ruta en donde desea exportar el archivo clientes.csv:");
+			String fileName = sc.nextLine();
+			try {
+				exportadorCsv.exportar(fileName, cs.getListaClientes());
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "2":
+			System.out.println("---------Exportar Datos-----------");
+			System.out.println("Ingresa la ruta en donde desea exportar el archivo clientes.txt:");
+			String fileName1 = sc.nextLine();
+			try {
+				exportarTxt.exportar(fileName1, cs.getListaClientes());
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		}
 	}
 	
 	public void terminarPrograma() {
 		//finaliza la ejecución del sistema
+		ut.esperar();
+		ut.limpiarPantalla();
+		System.out.println("Gracias por usar nuestro sistema. Hasta luego");
+		System.out.println("Abandonando el sistema de clientes...");
+		System.out.println("Acaba de salir del sistema");
+		System.exit(0);
 	}
 
 }
