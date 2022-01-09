@@ -2,6 +2,8 @@ package vista;
 
 import java.util.Scanner;
 
+import modelo.CategoriaEnum;
+import modelo.Cliente;
 import servicio.ClienteServicio;
 
 /*
@@ -75,10 +77,24 @@ public class Menu {
 	
 	public void agregarCliente() {
 		//solicita ingreso de datos y llena objeto de tipo Cliente
+		System.out.println("-------------Crear Cliente-------------");
+		System.out.println("Ingresa el RUN del Cliente: ");
+		String run = sc.nextLine();
+		System.out.println("Ingresa el Nombre del Cliente: ");
+		String nombre = sc.nextLine();
+		System.out.println("Ingresa el Apellido del Cliente: ");
+		String apellido = sc.nextLine();
+		System.out.println("Ingresa los años como Cliente:");
+		int anios = sc.nextInt();
+		System.out.println("---------------------------------------");
+		Cliente c = new Cliente(run, nombre, apellido, anios, CategoriaEnum.ACTIVO);
+		cs.agregarCliente(c);
 	}
 	
 	public void editarCliente() {
 		//permite la edición de algún cliente en caso de requerirlo o cambiar el estado del cliente
+		cs.editarCliente(0, null);
+		
 	}
 	
 	public void importarDatos() {

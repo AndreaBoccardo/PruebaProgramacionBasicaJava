@@ -8,6 +8,10 @@ public interface ClienteServicioInt {
 	
 	void agregarCliente(Cliente cli);
 	
-	void editarCliente(Cliente cli);
+	void editarCliente(int opcion, Cliente cli);
+	
+	void cambiarEstado();
+	
+	void editarDatos();
 	
 }
