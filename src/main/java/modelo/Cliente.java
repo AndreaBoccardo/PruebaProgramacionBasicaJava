@@ -18,6 +18,10 @@ public class Cliente {
 		this.nombreCategoria = nombreCategoria;
 	}
 
+	public Cliente(String runCliente2, String nombreCliente2, String apellidoCliente2, int parseInt, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getRunCliente() {
 		return runCliente;
 	}

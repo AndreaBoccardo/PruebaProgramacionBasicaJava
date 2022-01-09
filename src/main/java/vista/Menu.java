@@ -1,24 +1,25 @@
 package vista;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import modelo.CategoriaEnum;
 import modelo.Cliente;
+import servicio.ArchivoServicio;
 import servicio.ClienteServicio;
 import servicio.ExportadorCsv;
 import servicio.ExportadorTxt;
 import utilidades.Utilidad;
 
-/*
- archivoServicio, instancia de ArchivoServicio.
- */
+
 public class Menu {
 	
 	private Scanner sc;
 	private ClienteServicio cs;
 	private ExportadorCsv exportadorCsv;
 	private ExportadorTxt exportarTxt;
+	private ArchivoServicio as;
 	private String fileName = "Clientes";//exportar el archivo
 	private String fileName1 = "DBClientes.csv"; //importar el archivo
 	private Utilidad ut;
@@ -27,6 +28,7 @@ public class Menu {
 	public Menu() {
 		sc = new Scanner(System.in);
 		cs = new ClienteServicio();
+		as = new ArchivoServicio();
 		exportadorCsv = new ExportadorCsv();
 		exportarTxt = new ExportadorTxt();
 		ut = new Utilidad();
@@ -107,6 +109,23 @@ public class Menu {
 	
 	public void importarDatos() {
 		//ejecuta la carga de datos del archivo “DBClientes.csv”.
+		System.out.println("---------Cargar Datos-----------");
+		System.out.println("Ingresa la ruta en donde se encuentra el archivo DBClientes.csv:");
+		String fileName = sc.nextLine();
+		
+		try {
+			for (Cliente c : as.cargarDatos(fileName)) {
+				cs.agregarCliente(c);
+			}
+			
+			System.out.println("Datos cargados correctamente en la lista");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	public void exportarDatos() {
