@@ -79,6 +79,7 @@ public class Menu {
 		//solicita ingreso de datos y llena objeto de tipo Cliente
 		System.out.println("-------------Crear Cliente-------------");
 		System.out.println("Ingresa el RUN del Cliente: ");
+		sc.nextLine();
 		String run = sc.nextLine();
 		System.out.println("Ingresa el Nombre del Cliente: ");
 		String nombre = sc.nextLine();

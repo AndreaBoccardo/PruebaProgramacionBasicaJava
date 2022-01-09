@@ -3,6 +3,7 @@ package servicio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import modelo.CategoriaEnum;
 import modelo.Cliente;
@@ -76,19 +77,20 @@ public class ClienteServicio implements ClienteServicioInt {
 		System.out.println("Ingrese RUN del Cliente a editar:");
 		String run = sc.nextLine();
 		for (Cliente cliente : listaClientes) {
-			if (cliente.getRunCliente().equals(run)) {
+			if (cliente.getRunCliente() != null) {
+				Stream<Cliente> cli = listaClientes.stream().filter(c -> cliente.getRunCliente().equals(run));
 				System.out.println("-----Actualizando estado del Cliente----");
 				System.out.println("El estado actual es: " + cliente.getNombreCategoria());
 				System.out.println("1.-Si desea cambiar el estado del Cliente a Inactivo");
-				System.out.println("2.-Si desea mantener el estado del cliente Activo");
-				System.out.println("Ingrese opcion:");
+				System.out.println("2.-Si desea mantener/cambiar el estado del cliente a Activo");
+				System.out.println("Ingrese opcion: ");
 				int opc = sc.nextInt();
 				System.out.println("----------------------------------------");
 				if (opc == 1) {
 					cliente.setNombreCategoria(CategoriaEnum.INACTIVO);
 				}
 			} else {
-				System.out.println("No existe un cliente con ese RUN");
+				cliente.setNombreCategoria(CategoriaEnum.ACTIVO);
 			}
 		}
 
@@ -104,7 +106,7 @@ public class ClienteServicio implements ClienteServicioInt {
 				System.out.printf("1.-El RUN del Cliente es:  %s \n\r", cliente.getRunCliente());
 				System.out.printf("2.-El Nombre del Cliente es:  %s \n\r", cliente.getNombreCliente());
 				System.out.printf("3.-El Apellido del Cliente es:  %s \n\r", cliente.getApellidoCliente());
-				System.out.printf("4.-Los años como Cliente son:  %s \n\r", cliente.getAniosCliente());
+				System.out.printf("4.-Los años como Cliente son:  %s  años \n\r", cliente.getAniosCliente());
 				System.out.println("Ingrese la opción a editar de los datos del cliente:");
 				int opEditar = sc.nextInt();
 				String n = "";
