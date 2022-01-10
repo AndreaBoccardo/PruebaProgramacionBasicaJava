@@ -8,7 +8,7 @@ public interface ClienteServicioInt {
 
 	void agregarCliente(Cliente cli);
 
-	void editarCliente(int opcion, Cliente cli);
+	void editarCliente(String opcion, Cliente cli);
 
 	void cambiarEstado();
 

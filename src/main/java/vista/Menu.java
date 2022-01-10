@@ -73,8 +73,6 @@ public class Menu {
 	}
 
 	public void listarCliente() {
-		// muestra lista de clientes agregados, ya sea por importación o agregando a
-		// mano
 		if (cs.getListaClientes().size() == 0) {
 			System.out.println("No hay Clientes para visualizar");
 		} else {
@@ -83,15 +81,14 @@ public class Menu {
 	}
 
 	public void agregarCliente() {
-		// solicita ingreso de datos y llena objeto de tipo Cliente
 		System.out.println("-------------Crear Cliente-------------");
 		System.out.println("Ingresa el RUN del Cliente: ");
-		sc.nextLine();
+		sc.next();
 		String run = sc.nextLine();
 		System.out.println("Ingresa el Nombre del Cliente: ");
-		String nombre = sc.nextLine();
+		String nombre = sc.next();
 		System.out.println("Ingresa el Apellido del Cliente: ");
-		String apellido = sc.nextLine();
+		String apellido = sc.next();
 		System.out.println("Ingresa los años como Cliente:");
 		int anios = sc.nextInt();
 		System.out.println("---------------------------------------");
@@ -100,10 +97,7 @@ public class Menu {
 	}
 
 	public void editarCliente() {
-		// permite la edición de algún cliente en caso de requerirlo o cambiar el estado
-		// del cliente
-		cs.editarCliente(0, null);
-
+		cs.editarCliente("", null);
 	}
 
 	public void importarDatos() {
@@ -113,7 +107,7 @@ public class Menu {
 		try {
 			ArrayList<Cliente> clientes = as.cargarDatos(ruta);
 			cs.setListaClientes(clientes);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,7 +115,6 @@ public class Menu {
 	}
 
 	public void exportarDatos() {
-		// lama a método para exportar clientes en formato “.txt” o“.csv”.
 		System.out.println("---------Exportar Datos-----------");
 		System.out.println("Seleccione el formato a exportar:");
 		System.out.println("1.-Formato csv");
@@ -145,7 +138,7 @@ public class Menu {
 		case "2":
 			System.out.println("---------Exportar Datos-----------");
 			System.out.println("Ingresa la ruta en donde desea exportar el archivo clientes.txt:");
-			String ruta1 = sc.nextLine();
+			String ruta1 = sc.next();
 			try {
 				exportarTxt.exportar(ruta1, cs.getListaClientes());
 			} catch (FileNotFoundException e) {
@@ -157,8 +150,6 @@ public class Menu {
 	}
 
 	public void terminarPrograma() {
-		// finaliza la ejecución del sistema
-		
 		ut.limpiarPantalla();
 		System.out.println("Gracias por usar nuestro sistema. Hasta luego");
 		System.out.println("Abandonando el sistema de clientes...");

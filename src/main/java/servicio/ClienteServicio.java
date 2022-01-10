@@ -51,19 +51,19 @@ public class ClienteServicio implements ClienteServicioInt {
 	}
 
 	@Override
-	public void editarCliente(int op, Cliente cli) {
+	public void editarCliente(String opcion, Cliente cli) {
 		System.out.println("-------------Editar Cliente-------------");
 		System.out.println("Seleccione qué desea hacer:");
 		System.out.println("1.-Cambiar el estado del Cliente");
 		System.out.println("2.-Editar los datos ingresados del Cliente");
 		System.out.println("Ingrese opcion:");
-		op = sc.nextInt();
+		String op = sc.next();
 		System.out.println("----------------------------------------");
 		switch (op) {
-		case 1:
+		case "1":
 			cambiarEstado();
 			break;
-		case 2:
+		case "2":
 			editarDatos();
 			break;
 		default:
@@ -75,7 +75,7 @@ public class ClienteServicio implements ClienteServicioInt {
 	@Override
 	public void cambiarEstado() {
 		System.out.println("Ingrese RUN del Cliente a editar:");
-		String run = sc.nextLine();
+		String run = sc.next();
 		for (Cliente cliente : listaClientes) {
 			if (cliente.getRunCliente() != null) {
 				Stream<Cliente> cli = listaClientes.stream().filter(c -> cliente.getRunCliente().equals(run));
