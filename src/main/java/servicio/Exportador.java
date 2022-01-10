@@ -7,6 +7,6 @@ import modelo.Cliente;
 
 public abstract class Exportador {
 
-	public abstract void exportar(String fileName, List<Cliente> listaClientes) throws FileNotFoundException;
+	public abstract void exportar(String path, List<Cliente> listaClientes) throws FileNotFoundException;
 
 }

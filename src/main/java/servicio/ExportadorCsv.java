@@ -12,9 +12,19 @@ import modelo.Cliente;
 public class ExportadorCsv extends Exportador {
 
 	@Override
-	public void exportar(String fileName, List<Cliente> listaClientes) throws FileNotFoundException {
-
-		File archivo = new File(String.format("%s/clientes.csv", fileName));
+	public void exportar(String path, List<Cliente> listaClientes) throws FileNotFoundException {
+		File carpeta = new File(path);
+		File archivo = new File(String.format("%s/clientes.csv", path));
+		try {
+			if (!carpeta.exists()) {
+				carpeta.mkdir();
+				archivo.createNewFile();	
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		if (archivo.exists()) {
 			try {
 				FileWriter fw = new FileWriter(archivo);
@@ -36,7 +46,7 @@ public class ExportadorCsv extends Exportador {
 			}
 
 		} else {
-			throw new FileNotFoundException("El archivo no se encuentra en esa ruta.");
+			System.out.println("El archivo no se encuentra en esa ruta.");
 		}
 	}
 

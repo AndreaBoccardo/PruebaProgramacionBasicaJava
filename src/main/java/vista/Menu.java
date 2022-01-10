@@ -127,16 +127,16 @@ public class Menu {
 		System.out.println("1.-Formato csv");
 		System.out.println("2.-Formato txt");
 		System.out.println("Ingrese una opción para exportar:");
-		String op = sc.nextLine();
+		String op = sc.next();
 		System.out.println("----------------------------------");
 
 		switch (op) {
 		case "1":
 			System.out.println("---------Exportar Datos-----------");
 			System.out.println("Ingresa la ruta en donde desea exportar el archivo clientes.csv:");
-			String fileName = sc.nextLine();
+			String ruta = sc.next();
 			try {
-				exportadorCsv.exportar(fileName, cs.getListaClientes());
+				exportadorCsv.exportar(ruta, cs.getListaClientes());
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -145,9 +145,9 @@ public class Menu {
 		case "2":
 			System.out.println("---------Exportar Datos-----------");
 			System.out.println("Ingresa la ruta en donde desea exportar el archivo clientes.txt:");
-			String fileName1 = sc.nextLine();
+			String ruta1 = sc.nextLine();
 			try {
-				exportarTxt.exportar(fileName1, cs.getListaClientes());
+				exportarTxt.exportar(ruta1, cs.getListaClientes());
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
