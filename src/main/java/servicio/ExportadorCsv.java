@@ -18,14 +18,18 @@ public class ExportadorCsv extends Exportador {
 		try {
 			if (!carpeta.exists()) {
 				carpeta.mkdir();
-				archivo.createNewFile();	
+				archivo.createNewFile();
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		if (archivo.exists()) {
+			System.out.println("El archivo ya existe en esa ruta.");
+
+		} else {
+
 			try {
 				FileWriter fw = new FileWriter(archivo);
 				BufferedWriter escritor = new BufferedWriter(fw);
@@ -44,10 +48,6 @@ public class ExportadorCsv extends Exportador {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-		} else {
-			System.out.println("El archivo no se encuentra en esa ruta.");
 		}
 	}
-
 }
